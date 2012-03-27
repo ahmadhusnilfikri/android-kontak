@@ -3,6 +3,7 @@ package com.stripbandunk.kontak.action;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.stripbandunk.kontak.db.KontakDatabase;
 import com.stripbandunk.kontak.model.Kontak;
 import com.stripbandunk.kontak.view.TambahForm;
 
@@ -20,6 +21,10 @@ public class AddKontakAction implements OnClickListener {
 		kontak.telepon = tambahForm.getTextTelepon().getText().toString();
 		kontak.email = tambahForm.getTextEmail().getText().toString();
 
+		KontakDatabase database = KontakDatabase.getInstance();
+		database.add(kontak);
+
+		tambahForm.reset();
 	}
 
 }

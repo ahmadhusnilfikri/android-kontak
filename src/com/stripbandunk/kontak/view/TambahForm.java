@@ -27,6 +27,16 @@ public class TambahForm {
 		addAction();
 	}
 
+	private void addAction() {
+		buttonTambahKontak.setOnClickListener(new AddKontakAction(this));
+	}
+
+	public void reset() {
+		textEmail.setText("");
+		textNama.setText("");
+		textTelepon.setText("");
+	}
+
 	public EditText getTextNama() {
 		return textNama;
 	}
@@ -45,10 +55,6 @@ public class TambahForm {
 
 	public Button getButtonTambahKontak() {
 		return buttonTambahKontak;
-	}
-
-	private void addAction() {
-		buttonTambahKontak.setOnClickListener(new AddKontakAction(this));
 	}
 
 }
