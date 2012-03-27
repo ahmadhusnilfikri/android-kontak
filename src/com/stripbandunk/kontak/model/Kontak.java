@@ -17,4 +17,9 @@ public class Kontak {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return nama;
+	}
+
 }
