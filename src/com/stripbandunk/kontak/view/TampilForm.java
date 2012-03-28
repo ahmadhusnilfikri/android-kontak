@@ -1,12 +1,11 @@
 package com.stripbandunk.kontak.view;
 
-import com.stripbandunk.kontak.R;
-import com.stripbandunk.kontak.db.KontakDatabase;
-import com.stripbandunk.kontak.model.Kontak;
-
 import android.app.Activity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.stripbandunk.kontak.R;
+import com.stripbandunk.kontak.adapter.KontakAdapter;
+import com.stripbandunk.kontak.db.KontakDatabase;
 
 public class TampilForm {
 
@@ -22,8 +21,7 @@ public class TampilForm {
 
 	private void loadKontak() {
 		KontakDatabase database = KontakDatabase.getInstance();
-		ArrayAdapter<Kontak> adapter = new ArrayAdapter<Kontak>(activity,
-				android.R.layout.simple_list_item_1, database.findAll());
+		KontakAdapter adapter = new KontakAdapter(activity, database.findAll());
 		listViewKontak.setAdapter(adapter);
 	}
 
