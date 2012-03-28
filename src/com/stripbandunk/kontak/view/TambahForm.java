@@ -9,7 +9,7 @@ import com.stripbandunk.kontak.action.AddKontakAction;
 
 public class TambahForm {
 
-	public Activity activity;
+	private Activity activity;
 	private EditText textNama;
 	private EditText textTelepon;
 	private EditText textEmail;
