@@ -3,16 +3,17 @@ package com.stripbandunk.kontak.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.stripbandunk.kontak.R;
 import com.stripbandunk.kontak.model.Kontak;
+import com.stripbandunk.kontak.view.BarisForm;
 
 public class KontakAdapter extends ArrayAdapter<Kontak> {
+
+	private BarisForm form;
 
 	public KontakAdapter(Context context, List<Kontak> list) {
 		super(context, R.layout.baris, list);
@@ -21,22 +22,14 @@ public class KontakAdapter extends ArrayAdapter<Kontak> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			LayoutInflater inflater = (LayoutInflater) getContext()
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.baris, parent, false);
+			form = new BarisForm(getContext(), parent);
+			convertView = form.getView();
 		}
 
-		TextView textViewNama = (TextView) convertView
-				.findViewById(R.id.rowNama);
-		TextView textViewTelepon = (TextView) convertView
-				.findViewById(R.id.rowTelepon);
-		TextView textViewEmail = (TextView) convertView
-				.findViewById(R.id.rowEmail);
-
 		Kontak kontak = getItem(position);
-		textViewNama.setText(kontak.nama);
-		textViewTelepon.setText(kontak.telepon);
-		textViewEmail.setText(kontak.email);
+		form.getTextViewNama().setText(kontak.nama);
+		form.getTextViewTelepon().setText(kontak.telepon);
+		form.getTextViewEmail().setText(kontak.email);
 
 		return convertView;
 	}
